@@ -3,6 +3,8 @@ package br.com.projeto.estoque.model;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +12,8 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
+// Essa uniqueConstraints significa que as colunas nome e cnpj são, QUANDO
+// COMBINADAS, únicas
 @Table(name = "fornecedor", uniqueConstraints = { @UniqueConstraint(columnNames = { "nome", "cnpj" }) })
 public class Fornecedor {
 	@Id
@@ -22,6 +26,7 @@ public class Fornecedor {
 	@Column(nullable = false)
 	private String razaoSocial;
 
+	// Mas se o mesmo cnpj já estiver no banco, ele já é único independente do nome
 	@Column(nullable = false, unique = true)
 	private String cnpj;
 
@@ -31,8 +36,12 @@ public class Fornecedor {
 	@Embedded
 	private Endereco endereco;
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String email;
+
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	private Status status;
 
 	public Integer getId() {
 		return id;
@@ -88,5 +97,13 @@ public class Fornecedor {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 }

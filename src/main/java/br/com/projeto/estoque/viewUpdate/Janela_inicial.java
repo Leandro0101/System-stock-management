@@ -48,12 +48,8 @@ public class Janela_inicial extends JFrame {
 			}
 		});
 	}
-
-	/**
-	 * Create the frame.
-	 */
+	
 	public Janela_inicial() {
-		setTitle("Conexão com banco de dados");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 601, 477);

@@ -29,7 +29,7 @@ public class Janela_login extends JFrame {
 
 	private JPanel contentPane;
 	private JPasswordField passwordField;
-	private JPasswordField passwordField_senha_supervisor;
+	private JPasswordField passwordField_senha_super;
 
 	/**
 	 * Launch the application.
@@ -52,7 +52,7 @@ public class Janela_login extends JFrame {
 	 * Create the frame.
 	 */
 	public Janela_login() {
-		setTitle("Acesso ao sistema");
+		setTitle("SAGE - Login");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 697);
@@ -71,7 +71,7 @@ public class Janela_login extends JFrame {
 		tabbedPane.addTab("Entrar como gerente", null, panel, null);
 		panel.setLayout(null);
 
-		JLabel lblNewLabel_2 = new JLabel("CPF:");
+		JLabel lblNewLabel_2 = new JLabel("LOGIN:");
 		lblNewLabel_2.setBackground(SystemColor.control);
 		lblNewLabel_2.setForeground(SystemColor.controlHighlight);
 		lblNewLabel_2.setFont(new Font("Bahnschrift", Font.PLAIN, 14));
@@ -146,11 +146,11 @@ public class Janela_login extends JFrame {
 		lblNewLabel_2_1_1.setBounds(90, 130, 330, 14);
 		panel_1.add(lblNewLabel_2_1_1);
 
-		passwordField_senha_supervisor = new JPasswordField();
-		passwordField_senha_supervisor.setForeground(Color.BLACK);
-		passwordField_senha_supervisor.setBackground(SystemColor.control);
-		passwordField_senha_supervisor.setBounds(90, 152, 330, 35);
-		panel_1.add(passwordField_senha_supervisor);
+		passwordField_senha_super = new JPasswordField();
+		passwordField_senha_super.setForeground(Color.BLACK);
+		passwordField_senha_super.setBackground(SystemColor.control);
+		passwordField_senha_super.setBounds(90, 152, 330, 35);
+		panel_1.add(passwordField_senha_super);
 
 		JButton btnVoltar_1 = new JButton("Voltar");
 		// btnVoltar_1.setBackground(SystemColor.menu);
@@ -162,7 +162,8 @@ public class Janela_login extends JFrame {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				ControllerSupervisor ctrlSuper = new ControllerSupervisor();
-				if (ctrlSuper.fazerLogin(formattedTextField_cpf_super.getText(), passwordField_senha_supervisor.getText(), TipoComportamento.ENTRADA) == true) {
+				if (ctrlSuper.fazerLogin(formattedTextField_cpf_super.getText(), passwordField_senha_super.getText(),
+						TipoComportamento.ENTRADA) == true) {
 					Janela_principal jp = new Janela_principal();
 					jp.setVisible(true);
 					dispose();
