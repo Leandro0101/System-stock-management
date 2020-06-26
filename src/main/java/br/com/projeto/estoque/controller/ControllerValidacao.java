@@ -26,8 +26,8 @@ public class ControllerValidacao {
 
 	public boolean testarCamposCadastroSupervisor(String cpf_supervisor, String senha_supervisor,
 			String login_supervisor, String confSenha_supervisor) {
-		if (StringUtils.isBlank(cpf_supervisor) || StringUtils.isBlank(senha_supervisor) || StringUtils.isBlank(login_supervisor)
-				|| StringUtils.isBlank(confSenha_supervisor)) {
+		if (StringUtils.isBlank(cpf_supervisor) || StringUtils.isBlank(senha_supervisor)
+				|| StringUtils.isBlank(login_supervisor) || StringUtils.isBlank(confSenha_supervisor)) {
 			return false;
 		} else {
 			return true;
@@ -58,27 +58,26 @@ public class ControllerValidacao {
 		}
 	}
 
-	
 	public boolean validarConfirmacaoGerente(String cpf, String senha) {
 		try {
-		if (cpf.equals(GerenteAtual.getGerente().getCpf())
-				&& Criptografar.encriptografar(senha).equals(GerenteAtual.getGerente().getSenha())) {
-			return true;
-		} else {
-			Aviso.avisar(2);
-			return false;
-		}
-		}catch(NullPointerException e) {
+			if (cpf.equals(GerenteAtual.getGerente().getCpf())
+					&& Criptografar.encriptografar(senha).equals(GerenteAtual.getGerente().getSenha())) {
+				return true;
+			} else {
+				Aviso.avisar(18);
+				return false;
+			}
+		} catch (NullPointerException e) {
 			return false;
 		}
 	}
-	
+
 	public boolean validarConfirmacaoSupervisor(String cpf, String senha) {
 		if (cpf.equals(SupervisorAtual.getSupervisor().getCpf())
 				&& Criptografar.encriptografar(senha).equals(SupervisorAtual.getSupervisor().getSenha())) {
 			return true;
 		} else {
-			Aviso.avisar(2);
+			Aviso.avisar(18);
 			return false;
 		}
 	}
@@ -87,10 +86,8 @@ public class ControllerValidacao {
 		return varConfirmacao;
 	}
 
-	public static boolean testarCampos(String nova_senha_supervisor,
-			String novo_login_supervisor) {
-		if (StringUtils.isBlank(nova_senha_supervisor)
-				|| StringUtils.isBlank(novo_login_supervisor)) {
+	public static boolean testarCampos(String nova_senha_supervisor, String novo_login_supervisor) {
+		if (StringUtils.isBlank(nova_senha_supervisor) || StringUtils.isBlank(novo_login_supervisor)) {
 			return false;
 		} else {
 			return true;
